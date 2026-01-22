@@ -14,8 +14,8 @@ import img9 from "../../assets/img_achivments/fb672b79-e6c7-4531-84eb-4ef733356a
 export default function Achievements() {
   return (
     <section id="achievements">
-      <Label text="CERTIFICATE" />
-      <SectionTitle text="ACHIVED" />
+      <Label text="ACHIEVEMENTS" />
+      <SectionTitle text="CERTIFICATE" />
 
       <div className="gallery-container" style={{ marginTop: "20px" }}>
         <GalleryItem img={img1} text="PYTHON CERTIFICATE" />

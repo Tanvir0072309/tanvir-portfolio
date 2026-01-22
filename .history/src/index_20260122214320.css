@@ -28,20 +28,6 @@ body {
     color: var(--text);
     font-family: var(--body-font);
 }
-  .mobile-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 75px;
-      background: #fff;
-      border-bottom: var(--border);
-      display: none;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-      z-index: 2000;
-  }
 
 /* ================= NAVIGATION ================= */
 .side-nav {
@@ -72,44 +58,31 @@ body {
 }
 
 /* ================= MOBILE HEADER ================= */
- .menu-btn {
-     display: flex;
-     align-items: center;
-     gap: 10px;
-     font-family: var(--pixel-font);
-     font-size: 0.6rem;
-     cursor: pointer;
-     background: #000;
-     color: #fff;
-     padding: 10px 15px;
- }
+/* ================= MOBILE MENU ================= */
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.97);
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+}
 
- .mobile-menu {
-     position: fixed;
-     top: 0;
-     left: -100%;
-     width: 100%;
-     height: 100vh;
-     background: rgba(255, 255, 255, 0.98);
-     z-index: 2500;
-     transition: 0.5s;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     gap: 20px;
- }
+.mobile-menu.active {
+    transform: translateX(0);
+}
 
- .mobile-menu.active {
-     left: 0;
- }
-
- .mobile-menu a {
-     font-family: var(--pixel-font);
-     font-size: 1rem;
-     text-decoration: none;
-     color: #000;
- }
+.mobile-menu a {
+    font-family: var(--pixel-font);
+    font-size: 1rem;
+    text-decoration: none;
+    color: #000;
+}
 
 /* ===== SLIDER CONTAINER ===== */
 .slider-box {
@@ -190,58 +163,23 @@ body {
 /* ===== MOBILE ===== */
 @media (max-width: 1024px) {
     .slide {
-            width: 260px;
-            height: 190px;
-        }
-    
-        .slide.prev {
-            opacity: 0.5;
-            transform: translateX(-110px) rotateY(25deg) scale(0.85);
-            z-index: 5;
-        }
-    
-        .slide.next {
-            opacity: 0.5;
-            transform: translateX(110px) rotateY(-25deg) scale(0.85);
-            z-index: 5;
-        }
-    
-        .slide-caption {
-            font-size: 0.5rem;
-            padding: 8px;
-        }
-         .slider-box {
-             overflow: visible;
-             /* 🔥 IMPORTANT */
-         }
-                  .slider-box {
-                      perspective: 900px;
-                  }
+        width: 260px;
+        height: 190px;
+    }
+
+    .slide.prev {
+        transform: translateX(-160px) scale(0.75);
+    }
+
+    .slide.next {
+        transform: translateX(160px) scale(0.75);
+    }
+
+    .slide-caption {
+        font-size: 0.5rem;
+        padding: 8px;
+    }
 }
- /* --- SKILLS --- */
- .skill-item {
-     margin-bottom: 30px;
- }
-
- .skill-info {
-     display: flex;
-     justify-content: space-between;
-     font-family: var(--pixel-font);
-     font-size: 0.7rem;
-     margin-bottom: 12px;
- }
-
- .bar-bg {
-     width: 100%;
-     height: 30px;
-     background: #eee;
-     border: 4px solid #000;
- }
-
- .bar-fill {
-     height: 100%;
-     background: var(--primary);
- }
 /* ================= SECTIONS ================= */
 section {
     padding: 80px 8% 80px 160px;   /* 🔥 balanced padding */
@@ -344,20 +282,15 @@ section {
 }
 
 /* ================= CARD ================= */
-
 .card {
     border: var(--border);
-    padding: 18px 20px;
-    /* 🔥 aur kam height */
+    padding: 30px;
     box-shadow: var(--shadow);
     background: #fff;
     color: #000;
     transition: 0.3s;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    /* ✅ LEFT ALIGN */
 }
+
 .card:hover {
     transform: translate(-5px, -5px);
     box-shadow: 15px 15px 0px var(--primary);
@@ -390,6 +323,43 @@ section {
     text-align: center;
 }
 
+/* ================= SLIDER ================= */
+.slider-box {
+    position: relative;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+}
+
+.slide {
+    position: absolute;
+    width: 400px;
+    height: 280px;
+    border: 6px solid #000;
+    background: #fff;
+    transition: 0.6s;
+    opacity: 0;
+    box-shadow: var(--shadow);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateZ(200px);
+    z-index: 10;
+    border-color: var(--primary);
+}
+
+.slide.prev {
+    opacity: 0.5;
+    transform: translateX(-300px) rotateY(40deg) scale(0.8);
+}
+
+.slide.next {
+    opacity: 0.5;
+    transform: translateX(300px) rotateY(-40deg) scale(0.8);
+}
 
 /* ================= CONTACT HOVER ================= */
 .c-card.linkedin:hover { background:#0077b5; color:#fff; }
@@ -399,16 +369,6 @@ section {
     color:#fff;
 }
 
-footer {
-    margin-top: 80px;
-    padding: 50px 8%;
-    background: #000;
-    color: #fff;
-    text-align: center;
-    font-family: var(--pixel-font);
-    font-size: 0.6rem;
-    border-top: 5px solid #000;
-}
 /* ================= MOBILE ================= */
 @media (max-width: 1024px) {
     section {

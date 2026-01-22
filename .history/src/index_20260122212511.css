@@ -1,0 +1,9 @@
+section {
+    padding: 80px 6% 70px 160px;   /* left nav ke liye space, right ko bhi equal feel */
+    max-width: 1400px;            /* content ko zyada wide hone se roka */
+    margin: 0 auto 40px auto;     /* center alignment */
+    border-bottom: 3px solid #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

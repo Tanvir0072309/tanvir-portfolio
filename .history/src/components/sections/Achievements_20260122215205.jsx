@@ -14,13 +14,13 @@ import img9 from "../../assets/img_achivments/fb672b79-e6c7-4531-84eb-4ef733356a
 export default function Achievements() {
   return (
     <section id="achievements">
-      <Label text="CERTIFICATE" />
-      <SectionTitle text="ACHIVED" />
+      <Label text="ACHIEVEMENTS" />
+      <SectionTitle text="CERTIFICATe" />
 
       <div className="gallery-container" style={{ marginTop: "20px" }}>
-        <GalleryItem img={img1} text="PYTHON CERTIFICATE" />
-        <GalleryItem img={img2} text="JAVASCRIPT CERTIFICATE" />
-        <GalleryItem img={img3} text="RESERCH PAPER CERTIFICATE" />
+        <GalleryItem img={img1} text="PYTHON CERTIFICAT" />
+        <GalleryItem img={img2} text="JAVASCRIPT CERTIFICAT" />
+        <GalleryItem img={img3} text="RESERCH PAPER CERTIFICAT" />
       </div>
 
       <div className="gallery-container" style={{ marginTop: "20px" }}>
