@@ -389,12 +389,17 @@ section {
 
 .gallery-img {
     width: 100%;
-    height: 210px;
+    height: 200px;
     object-fit: cover;
     border-bottom: var(--border);
 }
 
-
+.gallery-text {
+    padding: 14px;
+    font-family: var(--retro-font);
+    font-size: 1.4rem;
+    text-align: center;
+}
 
 
 /* ================= CONTACT HOVER ================= */

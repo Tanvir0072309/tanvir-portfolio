@@ -211,20 +211,6 @@ export default function Projects() {
           >
             [VIEW GITHUB]
           </a>
-          <a
-            href="http://mrtanvirportfolio.netlify.app/"
-            target="_blank"
-            style={{
-              color: "var(--primary)",
-              fontFamily: "var(--pixel-font)",
-              fontSize: "0.5rem",
-              textDecoration: "none",
-              marginTop: "10px",
-              display: "inline-block",
-            }}
-          >
-            [VIEW LIVE]
-          </a>
         </div>
       </div>
     </section>

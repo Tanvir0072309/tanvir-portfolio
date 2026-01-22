@@ -212,7 +212,7 @@ export default function Projects() {
             [VIEW GITHUB]
           </a>
           <a
-            href="http://mrtanvirportfolio.netlify.app/"
+            href="https://hotel-service-site.netlify.app/"
             target="_blank"
             style={{
               color: "var(--primary)",
