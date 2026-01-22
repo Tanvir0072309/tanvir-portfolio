@@ -186,7 +186,7 @@ export default function Projects() {
       <div className="grid-pair" style={{ marginTop: "20px" }}>
         <div className="card" style={{ background: "#000", color: "#fff" }}>
           <h4 style={{ fontFamily: "var(--pixel-font)", fontSize: "0.8rem", color: "var(--primary)" }}>
-            05. Portfolio (React + Vite)
+            05. git Portfolio (React + Vite)
           </h4>
 
           <p className="desc-text" style={{ color: "#bbb" }}>

@@ -37,7 +37,7 @@ export default function Projects() {
             [VIEW GITHUB]
           </a>
 
-
+          <br />
 
           <a
             href="https://gym-shop-gliu.onrender.com"
@@ -155,7 +155,7 @@ export default function Projects() {
         {/* PROJECT 4 */}
         <div className="card" style={{ background: "#000", color: "#fff" }}>
           <h4 style={{ fontFamily: "var(--pixel-font)", fontSize: "0.8rem", color: "var(--primary)" }}>
-            04. TechWeavers
+            04. TechWeavers – Website Selling Platform
           </h4>
 
           <p className="desc-text" style={{ color: "#bbb" }}>
@@ -186,7 +186,7 @@ export default function Projects() {
       <div className="grid-pair" style={{ marginTop: "20px" }}>
         <div className="card" style={{ background: "#000", color: "#fff" }}>
           <h4 style={{ fontFamily: "var(--pixel-font)", fontSize: "0.8rem", color: "var(--primary)" }}>
-            05. Portfolio (React + Vite)
+            05. Personal Portfolio (React + Vite)
           </h4>
 
           <p className="desc-text" style={{ color: "#bbb" }}>
