@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Pro Portfolio | Tanvir Edition</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Poppins:wght@300;400;600;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --primary: #0044ff;
+            --pixel-font: 'Press Start 2P', cursive;
+            --retro-font: 'VT323', monospace;
+            --body-font: 'Poppins', sans-serif;
+            --border: 5px solid #000;
+            --shadow: 8px 8px 0px #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: var(--bg);
+            background-image: radial-gradient(#000 1.2px, transparent 1.2px);
+            background-size: 30px 30px;
+            background-attachment: fixed;
+            color: var(--text);
+            font-family: var(--body-font);
+        }
+
+        /* --- NAVIGATION --- */
+        .side-nav {
+            position: fixed;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: #fff;
+            border: var(--border);
+            padding: 25px 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .side-nav a {
+            font-size: 1.5rem;
+            color: #000;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .side-nav a:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .mobile-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 75px;
+            background: #fff;
+            border-bottom: var(--border);
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 2000;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            border: var(--border);
+            background: #fff;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            background: #eee;
+            border-bottom: var(--border);
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-text {
+            padding: 15px;
+            font-family: var(--retro-font);
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-align: center;
+            background: #fff;
+        }
+
+        .menu-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--pixel-font);
+            font-size: 0.6rem;
+            cursor: pointer;
+            background: #000;
+            color: #fff;
+            padding: 10px 15px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 2500;
+            transition: 0.5s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu a {
+            font-family: var(--pixel-font);
+            font-size: 1rem;
+            text-decoration: none;
+            color: #000;
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            padding: 100px 10% 100px 180px;
+            min-height: 95vh;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .label {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 8px 16px;
+            font-family: var(--pixel-font);
+            font-size: 0.6rem;
+            margin-bottom: 30px;
+            box-shadow: 5px 5px 0px var(--primary);
+        }
+
+        h2.section-title {
+            font-family: var(--pixel-font);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-main {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--primary);
+            color: #fff;
+            font-family: var(--pixel-font);
+            font-size: 0.8rem;
+            text-decoration: none;
+            border: 4px solid #000;
+            box-shadow: 6px 6px 0px #000;
+            transition: 0.2s;
+            margin-top: 25px;
+            width: fit-content;
+        }
+
+        .btn-main:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px #000;
+        }
+
+        /* --- GRID LAYOUTS --- */
+        .grid-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .grid-triple {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            border: var(--border);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            background: #fff;
+            text-decoration: none;
+            color: #000;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 15px 15px 0px var(--primary);
+        }
+
+        .company-name {
+            font-family: var(--retro-font);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .desc-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        /* --- SKILLS --- */
+        .skill-item {
+            margin-bottom: 30px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--pixel-font);
+            font-size: 0.7rem;
+            margin-bottom: 12px;
+        }
+
+        .bar-bg {
+            width: 100%;
+            height: 30px;
+            background: #eee;
+            border: 4px solid #000;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: var(--primary);
+        }
+
+        /* --- 3D SLIDER --- */
+        .slider-box {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
+        }
+
+        .slide {
+            position: absolute;
+            width: 400px;
+            height: 280px;
+            background: #fff;
+            border: 6px solid #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: 0.6s;
+            opacity: 0;
+            box-shadow: var(--shadow);
+            text-align: center;
+            padding: 25px;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateZ(200px);
+            z-index: 10;
+            border-color: var(--primary);
+        }
+
+        .slide.prev {
+            opacity: 0.5;
+            transform: translateX(-320px) rotateY(40deg) scale(0.8);
+            z-index: 5;
+        }
+
+        .slide.next {
+            opacity: 0.5;
+            transform: translateX(320px) rotateY(-40deg) scale(0.8);
+            z-index: 5;
+        }
+
+        /* --- CONTACT COLORS --- */
+        .c-card.linkedin:hover {
+            background: #0077b5;
+            color: #fff;
+            border-color: #0077b5;
+        }
+
+        .c-card.github:hover {
+            background: #333;
+            color: #fff;
+            border-color: #333;
+        }
+
+        .c-card.instagram:hover {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            color: #fff;
+            border-color: #d6249f;
+        }
+
+        /* Pehle grid-triple ko base setup do */
+        .grid-triple {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* Desktop pe 3 columns */
+            gap: 30px;
+        }
+
+        /* Hero Section Layout for Image */
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            justify-content: 间-between;
+            gap: 50px;
+            flex-wrap: wrap;
+            /* Mobile par image niche chali jayegi */
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Image Square Box */
+        .image-pixel-border {
+            width: 300px;
+            height: 300px;
+            border: var(--border);
+            background: #eee;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .image-pixel-border img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Mobile fix for image box */
+        @media (max-width: 1024px) {
+            .hero-flex {
+                flex-direction: column-reverse;
+                /* Text pehle, image baad mein */
+                text-align: center;
+            }
+
+            .image-pixel-border {
+                width: 250px;
+                height: 250px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Ab responsive media query */
+        @media (max-width: 1024px) {
+            .grid-triple {
+                grid-template-columns: 1fr;
+                /* Mobile pe sirf 1 column (Stacking) */
+                gap: 20px;
+            }
+
+            .card.c-card {
+                width: 100%;
+                /* Card puri width lega */
+                max-width: 400px;
+                /* Boht zyada bada na ho isliye limit */
+                margin: 0 auto;
+                /* Center alignment */
+            }
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            section {
+                padding: 100px 25px 80px 25px;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .mobile-header {
+                display: flex;
+            }
+
+            .side-nav {
+                display: none;
+            }
+
+            .grid-pair {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .btn-main {
+                margin: 25px auto;
+            }
+
+            .slide {
+                width: 280px;
+                height: 200px;
+            }
+
+            .slide.prev {
+                transform: translateX(-120px) scale(0.7);
+            }
+
+            .slide.next {
+                transform: translateX(120px) scale(0.6);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="mobile-header">
+        <div style="font-family: var(--pixel-font); font-size: 0.7rem;">TANVIR.EXE</div>
+        <div class="menu-btn" id="openMenu">MENU <i class="fa-solid fa-bars"></i></div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div style="position:absolute; top:30px; right:30px; font-size:2.5rem; cursor:pointer; font-family: var(--pixel-font);"
+            id="closeMenu">&times;</div>
+
+        <a href="#home"><i class="fa-solid fa-house"></i> HOME</a>
+        <a href="#experience"><i class="fa-solid fa-briefcase"></i> EXPERIENCE</a>
+        <a href="#skills"><i class="fa-solid fa-bolt"></i> STATS</a>
+        <a href="#projects"><i class="fa-solid fa-code"></i> PROJECTS</a>
+        <a href="#gallery"><i class="fa-solid fa-image"></i> GALLERY</a>
+        <a href="#achievements"><i class="fa-solid fa-code"></i> ACHIEVEMENTS</a>
+        <a href="#certs"><i class="fa-solid fa-medal"></i> ITEMS</a>
+        <a href="#contact"><i class="fa-solid fa-address-book"></i> CONTACT</a>
+    </div>
+
+    <nav class="side-nav">
+
+        <a href="#home" title="Home"><i class="fa-solid fa-house"></i></a>
+        <a href="#experience" title="Experience"><i class="fa-solid fa-briefcase"></i></a>
+        <a href="#skills" title="Stats"><i class="fa-solid fa-bolt"></i></a>
+        <a href="#projects" title="Projects"><i class="fa-solid fa-code"></i></a>
+        <a href="#gallery" title="Gallery"><i class="fa-solid fa-image"></i></a>
+        <a href="#achievements" title="Achievements"><i class="fa-solid fa-trophy"></i></a>
+        <a href="#certs" title="Certificates"><i class="fa-solid fa-medal"></i></a>
+        <a href="#contact" title="Contact"><i class="fa-solid fa-address-book"></i></a>
+
+    </nav>
+
+    <section id="home">
+        <span class="label">BCA STUDENT</span>
+
+        <div class="hero-flex">
+            <div class="hero-text">
+                <h1 style="font-size: 4.5rem; color: var(--primary); line-height: 1.1;">I'M <br> TANVIR KHAN</h1>
+                <h2 style="font-family: var(--retro-font); font-size: 2.8rem; margin-top: 15px;">FULL-STACK PYTHON
+                    DEVELOPER</h2>
+                <p class="desc-text" style="max-width: 700px; font-size: 1.2rem;">
+                    I’m a code-hungry developer focused on turning complex logic into clean, scalable server-side
+                    reality. While I love exploring the full stack, my heart beats for <b>Python & Django</b>. I don't
+                    just write code; I build smooth user experiences.</p>
+                <a href="mailto:mrtanvir0072@gmail.com?subject=Contact%20from%20Portfolio&body=Hi%20Tanvir,%0D%0A%0D%0AI%20want%20to%20connect%20with%20you." class="btn-main">
+  CONTACT ME <i class="fa-solid fa-paper-plane"></i>
+</a>
+</div>
+
+            <div class="image-pixel-border">
+                <img src="MyDp.jpeg" alt="Tanvir Khan">
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <span class="label">MISSION_LOG</span>
+        <h2 class="section-title">WORK HISTORY</h2>
+        <div class="grid-pair">
+            <div class="card">
+                <h3 style="font-family: var(--pixel-font); font-size: 0.7rem; color: #666;">2024 - PRESENT</h3>
+                <div class="company-name">JINARTH INFOTECH</div>
+                <p class="desc-text">
+                    I'm a web developer skilled in HTML, CSS, JavaScript, and Python. I recently developed a college
+                    dashboard using Django, where I handled backend logic and database management. I enjoy building
+                    full-featured web applications and constantly aim to improve my coding skills through real-world
+                    projects and continuous learning.
+
+                </p>
+                <a href="https://www.linkedin.com/company/jinarth-infotech/posts/?feedView=all"
+                    style="color: var(--primary); font-family: var(--pixel-font); font-size: 0.5rem; text-decoration: none; margin-top: 10px; display: inline-block;">[VIEW
+                    LINKEDIN PROFILE]</a>
+            </div>
+            <div class="card">
+                <h3 style="font-family: var(--pixel-font); font-size: 0.7rem; color: #666;">2023 - 2024</h3>
+                <div class="company-name">TECHNOGUIDE INFOSOFT PVT. LTD.</div>
+                <p class="desc-text">
+                    Worked as a Full-Stack Intern at Technoguide, where I developed web applications using Python with
+                    Django and Flask along with HTML, CSS, and JavaScript. Implemented API connectivity and integrated
+                    EmailJS for email-based functionalities. Gained hands-on experience with the Software Development
+                    Life Cycle (SDLC) and worked in an Agile development environment
+                </p>
+                <a href="https://www.linkedin.com/company/technoguideinfosoft/posts/?feedView=all"
+                    style="color: var(--primary); font-family: var(--pixel-font); font-size: 0.5rem; text-decoration: none; margin-top: 10px; display: inline-block;">[VIEW
+                    LINKEDIN PROFILE]</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <span class="label">POWER_LEVEL</span>
+        <h2 class="section-title">TECHNICAL STATS</h2>
+        <div class="grid-pair">
+            <div class="skill-group">
+                <div class="skill-item">
+                    <div class="skill-info"><span>PYTHON (PROGRAMMING LANGUAGE)</span><span>85%</span></div>
+                    <div class="bar-bg">
+                        <div class="bar-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>DJANGO / FLASK</span><span>80%</span></div>
+                    <div class="bar-bg">
+                        <div class="bar-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>HTNL / HTML 5</span><span>92%</span></div>
+                    <div class="bar-bg">
+                        <div class="bar-fill" style="width: 92%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>CSS / CSS 3</span><span>90%</span></div>
+                    <div class="bar-bg">
+                        <div class="bar-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-group">
+                <div class="skill-item">
+                    <div class="skill-info"><span>JAVASCRIPT</span><span>65%</span></div>
+                    <div class="bar-bg">
+                        <div class="bar-fill" style="width: 65%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>BOOTSTRAP ( FRAMEWORK )</span><span>96%</span></div>
+                    <div class="bar-bg">
+                        <div class="bar-fill" style="width: 96%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>SQL</span><span>70%</span></div>
+                    <div class="bar-bg">
+                        <div class="bar-fill" style="width: 70%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>REACT / JS</span><span>30%</span></div>
+                    <div class="bar-bg">
+                        <div class="bar-fill" style="width: 30%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <span class="label">COMPLETED_MISSIONS</span>
+        <h2 class="section-title">FEATURED PROJECTS</h2>
+        <div class="grid-pair">
+            <div class="card" style="background:#000; color:#fff;">
+                <h4 style="font-family:var(--pixel-font); font-size:0.8rem; color:var(--primary);">01. GYM Tools Store
+                </h4>
+                <p class="desc-text" style="color: #bbb;">
+                    I’m excited to share the Gym E-Commerce website I built during my internship at TechnoGuide! 🚀<br>
+
+
+
+                    This project helped me apply my Django skills in a real-world scenario and understand the complete
+                    workflow of developing, designing, and deploying a dynamic website.
+                </p>
+                <a href="https://github.com/Tanvir0072309/GYM_Shop"
+                    style="color: var(--primary); font-family: var(--pixel-font); font-size: 0.5rem; text-decoration: none; margin-top: 10px; display: inline-block;">[VIEW
+                    GITHUB]</a>
+                <a href="https://gym-shop-gliu.onrender.com"
+                    style="color: var(--primary); font-family: var(--pixel-font); font-size: 0.5rem; text-decoration: none; margin-top: 10px; display: inline-block;">[VIEW
+                    LIVE]</a>
+            </div>
+            <div class="card" style="background:#000; color:#fff;">
+                <h4 style="font-family:var(--pixel-font); font-size:0.8rem; color:var(--primary);">02. Weather App</h4>
+                <p class="desc-text" style="color: #bbb;">
+                    During my internship at Techno Guid, I built a fully functional Weather Application using API
+                    connectivity. This project helped me understand how real-time data is fetched, processed, and
+                    displayed in a clean, user-friendly interface.
+                </p>
+                <a href="https://github.com/Tanvir0072309/Weather-app"
+                    style="color: var(--primary); font-family: var(--pixel-font); font-size: 0.5rem; text-decoration: none; margin-top: 10px; display: inline-block;">[VIEW
+                    GITHUB]</a>
+                <a href="https://weather-app-c80b93.netlify.app/"
+                    style="color: var(--primary); font-family: var(--pixel-font); font-size: 0.5rem; text-decoration: none; margin-top: 10px; display: inline-block;">[VIEW
+                    LIVE]</a>
+            </div>
+        </div>
+        <div class="grid-pair" style="margin-top: 20px;">
+            <div class="card" style="background:#000; color:#fff;">
+                <h4 style="font-family:var(--pixel-font); font-size:0.8rem; color:var(--primary);">03.
+                    Hotel Room Service</h4>
+                <p class="desc-text" style="color: #bbb;">
+                    Created a hotel room service web page during my internship at Jinarth Infotech. Designed an
+                    interactive menu and ordering interface to improve guest convenience. Prepared a detailed project
+                    report covering features, UI/UX design, and implementation process. Focused on responsive design and
+                    smooth functionality for an enhanced user experience.
+
+                </p>
+                <a href="https://github.com/Tanvir0072309/Hotel_Service_Site"
+                    style="color: var(--primary); font-family: var(--pixel-font); font-size: 0.5rem; text-decoration: none; margin-top: 10px; display: inline-block;">[VIEW
+                    GITHUB]</a>
+                <a href="https://hotel-service-site.netlify.app/"
+                    style="color: var(--primary); font-family: var(--pixel-font); font-size: 0.5rem; text-decoration: none; margin-top: 10px; display: inline-block;">[VIEW
+                    LIVE]</a>
+            </div>
+            <div class="card" style="background:#000; color:#fff;">
+                <h4 style="font-family:var(--pixel-font); font-size:0.8rem; color:var(--primary);">04.
+                    TechWeavers website selling platform</h4>
+                <p class="desc-text" style="color: #bbb;">
+                    That's why I created it so that students can use it to easily sell their website to other people.
+                </p>
+
+                <a href="https://chic-puppy-b71a4d.netlify.app/"
+                    style="color: var(--primary); font-family: var(--pixel-font); font-size: 0.5rem; text-decoration: none; margin-top: 10px; display: inline-block;">[VIEW
+                    LIVE]</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <span class="label">MEDIA_VAULT</span>
+        <h2 class="section-title">MY GALLERY</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="img_gallary/19808d6c-b188-4a8e-a525-f5759e01ada9.jpg" alt="Work" class="gallery-img">
+                <div class="gallery-text">MY WORKSTATION SETUP</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img_gallary/27e5776c-8980-4274-baa1-24c90621cb98.jpg" alt="Event" class="gallery-img">
+                <div class="gallery-text">CONFERENCE EVENT 2024</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img_gallary/98f7a83a-1332-462e-830c-110c1a7f02f2.jpg" alt="Code" class="gallery-img">
+                <div class="gallery-text">LATE NIGHT CODING</div>
+            </div>
+        </div>
+        <div class="gallery-container" style="margin-top: 20px;">
+            <div class="gallery-item">
+                <img src="img_gallary/a9e4e5d8-d77e-46c2-988b-632e780a1ebd.jpg" alt="Work" class="gallery-img">
+                <div class="gallery-text">MY WORKSTATION SETUP</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img_gallary/b173ab72-4986-45d2-b5c3-85d71409d67d.jpg" alt="Event" class="gallery-img">
+                <div class="gallery-text">CONFERENCE EVENT 2024</div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="achievements">
+        <span class="label">CERTIFICATES</span>
+        <h2 class="section-title">ACHIEVEMENTS</h2>
+        <div class="gallery-container" style="margin-top: 20px;">
+            <div class="gallery-item">
+                <img src="img_achivments/a8e2b494-47db-45a4-b730-228009d3d9d5.jpg" alt="Work" class="gallery-img">
+                <div class="gallery-text">PYTHON CERTIFICAT</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img_achivments/cf2930dc-f977-4511-aa6e-53b78419ea96.jpg" alt="Event" class="gallery-img">
+                <div class="gallery-text">JAVASCRIPT CERTIFICAT</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img_achivments/42d428fa-f68e-406c-b554-0672da9d1682.jpg" alt="Code" class="gallery-img">
+                <div class="gallery-text">RESERCH PAPER CERTIFICAT</div>
+            </div>
+        </div>
+        <div class="gallery-container" style="margin-top: 20px;">
+            <div class="gallery-item">
+                <img src="img_achivments/01ce6713-7cd5-4f43-94df-29b44f8c8951.jpg" alt="Code" class="gallery-img">
+                <div class="gallery-text">ENIGMA 2K24 1ST RANK CERTIFICAT</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img_achivments/2e66198c-74d7-4413-a558-849835ff3f46.jpg" alt="Work" class="gallery-img">
+                <div class="gallery-text">AEKYAM 2.O WEB DESIGN 2ND RANK CERTIFICAT</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img_achivments/36f0fdba-f23c-43e5-b121-a5d1c8edb557.jpg" alt="Work" class="gallery-img">
+                <div class="gallery-text">GOOD BUY 2K23 COMPITETION 3RD RENK</div>
+            </div>
+
+
+        </div>
+        <div class="gallery-container" style="margin-top: 20px;">
+            <div class="gallery-item">
+                <img src="img_achivments/c1f77eee-b668-49d1-aec8-18db12970003.jpg" alt="Event" class="gallery-img">
+                <div class="gallery-text">BEST LIBRARY USER 2024 CERTIFICAT</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img_achivments/97d72533-937a-4004-b3d5-fb4257ab70fe.jpg" alt="Event" class="gallery-img">
+                <div class="gallery-text">BEST LIBRARY USER 2025 CERTIFICAT</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="img_achivments/fb672b79-e6c7-4531-84eb-4ef733356a71.jpg" alt="Code" class="gallery-img">
+                <div class="gallery-text">DIGITAL LITRACY BY AMUL COMPANY</div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="certs">
+        <span class="label">CERTIFICATES</span>
+        <h2 class="section-title">PARTICIPATS</h2>
+        <div class="slider-box">
+
+
+            <div class="slide next" style="padding: 0; overflow: hidden; background: #000;">
+                <img src="img_participation/340bda4c-dbf5-46c0-9598-1f45d563c711.jpg" alt="Django Certificate"
+                    style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div
+                    style="position: absolute; bottom: 0; background: rgba(0,0,0,0.8); color: #fff; width: 100%; padding: 5px; font-family: var(--pixel-font); font-size: 0.5rem; text-align: center;">
+                    1. AEKYAM 2.O PARTICIPATION ( 1 )
+                </div>
+            </div>
+
+            <div class="slide prev" style="padding: 0; overflow: hidden; background: #000;">
+                <img src="img_participation/5d9974d9-a8b2-411b-8087-454c5b392f10.jpg" alt="AI Certificate"
+                    style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div
+                    style="position: absolute; bottom: 0; background: rgba(0,0,0,0.8); color: #fff; width: 100%; padding: 5px; font-family: var(--pixel-font); font-size: 0.5rem; text-align: center;">
+                    2. TECH DYNESTY BEAUTY WITH BRAIN PARTICIPATION
+                </div>
+            </div>
+
+            <div class="slide prev" style="padding: 0; overflow: hidden; background: #000;">
+                <img src="img_participation/704cdfd6-f7c0-4bc0-b0cd-090a86093e66.jpg" alt="AI Certificate"
+                    style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div
+                    style="position: absolute; bottom: 0; background: rgba(0,0,0,0.8); color: #fff; width: 100%; padding: 5px; font-family: var(--pixel-font); font-size: 0.5rem; text-align: center;">
+                    3. DANCE COMPITETION 2024 PARTICIPATION
+                </div>
+            </div>
+
+            <div class="slide prev" style="padding: 0; overflow: hidden; background: #000;">
+                <img src="img_participation/a02fe446-1a1c-4d35-9cd6-fc92f9ea19c8.jpg" alt="AI Certificate"
+                    style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div
+                    style="position: absolute; bottom: 0; background: rgba(0,0,0,0.8); color: #fff; width: 100%; padding: 5px; font-family: var(--pixel-font); font-size: 0.5rem; text-align: center;">
+                    4. AEKYAM 2.O WEB DESIGN PARTICIPATION
+                </div>
+            </div>
+
+            <div class="slide prev" style="padding: 0; overflow: hidden; background: #000;">
+                <img src="img_participation/af95a62a-332f-490c-b41c-2f06aaa6022f.jpg" alt="AI Certificate"
+                    style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div
+                    style="position: absolute; bottom: 0; background: rgba(0,0,0,0.8); color: #fff; width: 100%; padding: 5px; font-family: var(--pixel-font); font-size: 0.5rem; text-align: center;">
+                    5. AEKYAM 2.O PARTICIPATION ( 2 )
+                </div>
+            </div>
+
+            <div class="slide prev" style="padding: 0; overflow: hidden; background: #000;">
+                <img src="img_participation/b9f24287-7cc8-462c-a483-ccd8a7c47565.jpg" alt="AI Certificate"
+                    style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div
+                    style="position: absolute; bottom: 0; background: rgba(0,0,0,0.8); color: #fff; width: 100%; padding: 5px; font-family: var(--pixel-font); font-size: 0.5rem; text-align: center;">
+                    6. TECH DYNESTY ANDHADHUN PARTICIPATION
+                </div>
+            </div>
+
+            <div class="slide prev" style="padding: 0; overflow: hidden; background: #000;">
+                <img src="img_participation/ca34abaf-2288-4467-aaba-c4fa77b2f191.jpg" alt="AI Certificate"
+                    style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div
+                    style="position: absolute; bottom: 0; background: rgba(0,0,0,0.8); color: #fff; width: 100%; padding: 5px; font-family: var(--pixel-font); font-size: 0.5rem; text-align: center;">
+                    7. ENIGMA 2K24 PARTICIPATION
+                </div>
+            </div>
+
+            <div class="slide prev" style="padding: 0; overflow: hidden; background: #000;">
+                <img src="img_participation/f4927076-9303-4612-a118-b8dc92af1e5e.jpg" alt="AI Certificate"
+                    style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div
+                    style="position: absolute; bottom: 0; background: rgba(0,0,0,0.8); color: #fff; width: 100%; padding: 5px; font-family: var(--pixel-font); font-size: 0.5rem; text-align: center;">
+                    TEACHER'S DAY PARTICIPATION
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button onclick="moveSlide(-1)"
+                style="padding: 12px 25px; background:#000; color:#fff; cursor:pointer; font-family:var(--pixel-font); font-size:0.7rem; border:none; box-shadow: 4px 4px 0px var(--primary);">PREV</button>
+            <button onclick="moveSlide(1)"
+                style="padding: 12px 25px; background:#000; color:#fff; cursor:pointer; margin-left: 15px; font-family:var(--pixel-font); font-size:0.7rem; border:none; box-shadow: 4px 4px 0px var(--primary);">NEXT</button>
+        </div>
+
+    </section>
+
+
+
+    <section id="contact" style="border-bottom: none;">
+        <span class="label">COMM_LINK</span>
+        <h2 class="section-title">CONNECT WITH ME</h2>
+        <div class="grid-triple">
+            <a href="https://in.linkedin.com/in/tanvir-pathan-3b1b12337" target="_blank" class="card c-card linkedin"
+                style="text-align:center;">
+                <i class="fa-brands fa-linkedin" style="font-size: 3rem;"></i>
+                <h4 style="margin-top: 15px; font-family: var(--pixel-font); font-size: 0.6rem;">LINKEDIN</h4>
+            </a>
+            <a href="https://www.instagram.com/_mr_tanvir_0072?utm_source=qr&igsh=MWQ5dXc3NXQ5b3l2YQ==" target="_blank"
+                class="card c-card instagram" style="text-align:center;">
+                <i class="fa-brands fa-instagram" style="font-size: 3rem;"></i>
+                <h4 style="margin-top: 15px; font-family: var(--pixel-font); font-size: 0.6rem;">INSTAGRAM</h4>
+            </a>
+            <a href="https://github.com/Tanvir0072309" target="_blank" class="card c-card github"
+                style="text-align:center;">
+                <i class="fa-brands fa-github" style="font-size: 3rem;"></i>
+                <h4 style="margin-top: 15px; font-family: var(--pixel-font); font-size: 0.6rem;">GITHUB</h4>
+            </a>
+        </div>
+    </section>
+
+    <footer
+        style="padding: 50px; background:#000; color:#fff; text-align:center; font-family:var(--pixel-font); font-size:0.6rem;">
+        &copy; 2026 TANVIR KHAN | PIXEL PERFECT ARCHITECT
+    </footer>
+
+    <script>
+        const menu = document.getElementById('mobileMenu');
+        const openBtn = document.getElementById('openMenu');
+        const closeBtn = document.getElementById('closeMenu');
+
+        openBtn.addEventListener('click', () => menu.classList.add('active'));
+        closeBtn.addEventListener('click', () => menu.classList.remove('active'));
+
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => menu.classList.remove('active'));
+        });
+
+        let slideIdx = 0;
+        const slides = document.querySelectorAll('.slide');
+        function moveSlide(dir) {
+            slideIdx = (slideIdx + dir + slides.length) % slides.length;
+            slides.forEach((s, i) => {
+                s.className = 'slide';
+                if (i === slideIdx) s.classList.add('active');
+                else if (i === (slideIdx + 1) % slides.length) s.classList.add('next');
+                else if (i === (slideIdx - 1 + slides.length) % slides.length) s.classList.add('prev');
+            });
+        }
+        moveSlide(0);
+    </script>
+</body>
+
+</html>

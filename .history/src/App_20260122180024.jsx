@@ -1,11 +1,11 @@
-import "./App.css"
+import { useState } from "react"
 
-// HEADER
-import SideNav from "./components/Header/SideNav"
+/* Header components */
 import MobileHeader from "./components/Header/MobileHeader"
 import MobileMenu from "./components/Header/MobileMenu"
+import SideNav from "./components/Header/SideNav"
 
-// SECTIONS
+/* Sections */
 import Home from "./components/sections/Home"
 import Experience from "./components/sections/Experience"
 import Skills from "./components/sections/Skills"
@@ -14,18 +14,18 @@ import Gallery from "./components/sections/Gallery"
 import Achievements from "./components/sections/Achievements"
 import Participation from "./components/sections/Participation"
 import Contact from "./components/sections/Contact"
-import Footer from "./components/sections/Footer"
 
+function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
 
-export default function App() {
   return (
     <>
-      {/* HEADER */}
-      <MobileHeader />
-      <MobileMenu />
+      {/* ===== HEADER / NAVIGATION ===== */}
+      <MobileHeader onOpen={() => setMenuOpen(true)} />
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
       <SideNav />
 
-      {/* SECTIONS */}
+      {/* ===== PAGE SECTIONS ===== */}
       <Home />
       <Experience />
       <Skills />
@@ -34,9 +34,22 @@ export default function App() {
       <Achievements />
       <Participation />
       <Contact />
-      <Contact />
-<Footer />
 
+      {/* ===== FOOTER ===== */}
+      <footer
+        style={{
+          padding: "50px",
+          background: "#000",
+          color: "#fff",
+          textAlign: "center",
+          fontFamily: "var(--pixel-font)",
+          fontSize: "0.6rem",
+        }}
+      >
+        © 2026 TANVIR KHAN | PIXEL PERFECT ARCHITECT
+      </footer>
     </>
   )
 }
+
+export default App

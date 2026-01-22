@@ -14,8 +14,6 @@ import Gallery from "./components/sections/Gallery"
 import Achievements from "./components/sections/Achievements"
 import Participation from "./components/sections/Participation"
 import Contact from "./components/sections/Contact"
-import Footer from "./components/sections/Footer"
-
 
 export default function App() {
   return (
@@ -34,9 +32,6 @@ export default function App() {
       <Achievements />
       <Participation />
       <Contact />
-      <Contact />
-<Footer />
-
     </>
   )
 }

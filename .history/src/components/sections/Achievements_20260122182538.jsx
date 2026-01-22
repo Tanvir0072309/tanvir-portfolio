@@ -15,7 +15,7 @@ export default function Achievements() {
   return (
     <section id="achievements">
       <Label text="CERTIFICATES" />
-      <SectionTitle text="ACHIEVEMENT" />
+      <SectionTitle text="ACHIEVEMENTS" />
 
       <div className="gallery-container" style={{ marginTop: "20px" }}>
         <GalleryItem img={img1} text="PYTHON CERTIFICAT" />

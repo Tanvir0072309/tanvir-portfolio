@@ -34,7 +34,7 @@ export default function Participation() {
   return (
     <section id="certs">
       <Label text="CERTIFICATES" />
-      <SectionTitle text="PARTICIPAT" />
+      <SectionTitle text="PARTICIPATS" />
 
       <div className="slider-box">
         {slidesData.map((slide, i) => {
